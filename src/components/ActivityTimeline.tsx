@@ -3,7 +3,6 @@ import { Box, Paper, Typography, MenuItem, Select, FormControl, OutlinedInput } 
 import CallIcon from '@mui/icons-material/Call';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import DescriptionOutlinedIcon from '@mui/icons-material/DescriptionOutlined';
-import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 
 // Mock data
 const initialActivities = [
