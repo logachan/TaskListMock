@@ -49,85 +49,103 @@ const TaskForm: React.FC<{ onAddTask: (task: any) => void }> = ({ onAddTask }) =
       <Typography variant="h6" gutterBottom>
         New Task
       </Typography>
-      <Grid container spacing={3}>
-          <Grid size={{ xs: 12, sm: 6 }}>
-              <TextField 
-                required 
-                select
-                fullWidth 
-                label="Task Type" 
-                name="type"
-                value={formData.type}
-                onChange={handleChange}
-                InputLabelProps={{ shrink: true }}
-              >
-                 <MenuItem value="todo">To Do</MenuItem>
-                 <MenuItem value="call">Call</MenuItem>
-              </TextField>
+      <Grid container spacing={4}>
+          {/* Left Column */}
+          <Grid size={{ xs: 12, md: 6 }}>
+              <Grid container spacing={3}>
+                  <Grid size={{ xs: 12 }}>
+                      <TextField 
+                        required 
+                        select
+                        fullWidth 
+                        label="Task Type" 
+                        name="type"
+                        value={formData.type}
+                        onChange={handleChange}
+                        InputLabelProps={{ shrink: true }}
+                      >
+                         <MenuItem value="todo">To Do</MenuItem>
+                         <MenuItem value="call">Call</MenuItem>
+                      </TextField>
+                  </Grid>
+
+                  <Grid size={{ xs: 12 }}>
+                      <TextField 
+                        required 
+                        select
+                        fullWidth 
+                        label="Assigned to" 
+                        name="assignedTo"
+                        value={formData.assignedTo}
+                        onChange={handleChange}
+                        InputLabelProps={{ shrink: true }}
+                      >
+                          <MenuItem value="user1">Ravi Kumar</MenuItem>
+                      </TextField>
+                  </Grid>
+
+                  <Grid size={{ xs: 12 }}>
+                     <Box sx={{ display: 'flex', gap: 2 }}>
+                         <TextField
+                            fullWidth
+                            type="date"
+                            label="Start Date"
+                            defaultValue="2018-11-13"
+                            InputLabelProps={{ shrink: true }}
+                         />
+                         <TextField
+                            fullWidth
+                            type="date"
+                            label="End Date"
+                            name="dueDate"
+                            value={formData.dueDate}
+                            onChange={handleChange}
+                            InputLabelProps={{ shrink: true }}
+                         />
+                     </Box>
+                  </Grid>
+
+                  <Grid size={{ xs: 12 }}>
+                       <TextField
+                        fullWidth
+                        type="date"
+                        label="Remind On"
+                        defaultValue="2018-11-13"
+                        InputLabelProps={{ shrink: true }}
+                     />
+                  </Grid>
+              </Grid>
           </Grid>
-          <Grid size={{ xs: 12, sm: 6 }}>
-              <TextField 
-                fullWidth 
-                required
-                label="Subject" 
-                name="subject"
-                value={formData.subject}
-                error={!formData.subject && open && severity === 'error'}
-                onChange={handleChange}
-                InputLabelProps={{ shrink: true }}
-              />
-          </Grid>
-          <Grid size={{ xs: 12, sm: 6 }}>
-              <TextField 
-                required 
-                select
-                fullWidth 
-                label="Assigned to" 
-                name="assignedTo"
-                value={formData.assignedTo}
-                onChange={handleChange}
-                InputLabelProps={{ shrink: true }}
-              >
-                  <MenuItem value="user1">Ravi Kumar</MenuItem>
-              </TextField>
-          </Grid>
-          <Grid size={{ xs: 12, sm: 6 }}>
-             <Box sx={{ display: 'flex', gap: 2 }}>
-                 <TextField
-                    fullWidth
-                    type="date"
-                    label="Start Date"
-                    defaultValue="2018-11-13"
-                    InputLabelProps={{ shrink: true }}
-                 />
-                 <TextField
-                    fullWidth
-                    type="date"
-                    label="End Date"
-                    name="dueDate"
-                    value={formData.dueDate}
-                    onChange={handleChange}
-                    InputLabelProps={{ shrink: true }}
-                 />
-             </Box>
-          </Grid>
-           <Grid size={{ xs: 12, sm: 6 }}>
-              <TextField
-                fullWidth
-                type="date"
-                label="Remind On"
-                defaultValue="2018-11-13"
-                InputLabelProps={{ shrink: true }}
-             />
-          </Grid>
-          <Grid size={{ xs: 12, sm: 12 }}>
-               <TextField 
-                fullWidth 
-                label="Details" 
-                multiline
-                rows={6}
-                InputLabelProps={{ shrink: true }}
-              />
+
+          {/* Right Column */}
+          <Grid size={{ xs: 12, md: 6 }}>
+              <Grid container spacing={3} sx={{ height: '100%', flexDirection: 'column' }}>
+                  <Grid size={{ xs: 12 }}>
+                      <TextField 
+                        fullWidth 
+                        required
+                        label="Subject" 
+                        name="subject"
+                        value={formData.subject}
+                        error={!formData.subject && open && severity === 'error'}
+                        onChange={handleChange}
+                        InputLabelProps={{ shrink: true }}
+                      />
+                  </Grid>
+
+                  <Grid size={{ xs: 12 }} sx={{ flexGrow: 1 }}>
+                       <TextField 
+                        fullWidth 
+                        label="Details" 
+                        multiline
+                        rows={10}
+                        InputLabelProps={{ shrink: true }}
+                        sx={{ 
+                            '& .MuiInputBase-root': { height: '100%', alignItems: 'flex-start' }
+                        }}
+                      />
+                  </Grid>
+              </Grid>
           </Grid>
       </Grid>
       <Box sx={{ display: 'flex', justifyContent: 'flex-end', gap: 2, mt: 3 }}>
